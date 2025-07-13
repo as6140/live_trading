@@ -26,8 +26,8 @@ Cursor will walk through each task step-by-step, generating code, answering ques
    - [x] Create QuantConnect account (Paid tier) - Organization: "Alexander Shropshire"
    - [x] Set up QuantConnect API credentials and test integration
    - [x] Fix type annotation conflicts in model_loader.py for QuantConnect compatibility
-   - [ ] Create GitHub repo for project (optional)
-   - [ ] Create IBKR or Alpaca brokerage account (for live trading later)
+   - [x] Create GitHub repo for project (optional) - ✅ COMPLETE: https://github.com/as6140/live_trading
+   - [x] Create IBKR or Alpaca brokerage account (for live trading later) - ✅ COMPLETE: IBKR paper account DUM873395 connected and live trading
 
 3. ✅ File & Repo Layout (Full Independence Structure)
    - [x] `/lean_workspace/` - All QuantConnect Lean projects (self-contained)
@@ -146,11 +146,20 @@ Cursor will walk through each task step-by-step, generating code, answering ques
    - [ ] Store in `/backtests/{timestamp}/`
    - [ ] ✍️ `README.md` in `/backtests/`: how to run and interpret backtests
 
-15. 📊 Regime Testing
+15. ⚙️ Parameter Optimization
+   - [ ] Use QuantConnect's "Optimize Project" feature to test parameter combinations
+   - [ ] Define optimization parameters in strategy config (e.g. TAKE_PROFIT, MAX_DELTA)
+   - [ ] Run `lean cloud optimize --project MyStrategy` or use web interface
+   - [ ] Analyze results to find optimal parameter combinations
+   - [ ] Save optimization results in `/backtests/optimization_{timestamp}/`
+   - [ ] Update strategy config.json with optimal parameters
+   - [ ] ✍️ Document optimization methodology in strategy README.md
+
+16. 📊 Regime Testing
    - [ ] Segment tests over market eras
    - [ ] Save regime-specific charts
 
-16. 🎲 Monte Carlo Strategy Simulation
+17. 🎲 Monte Carlo Strategy Simulation
    - [ ] Simulate 10,000 return paths
    - [ ] Save `.html` report in `/risk_reports/`
    - [ ] ✍️ `README.md` in `/risk_reports/`: methodology + how to run new simulations
@@ -159,13 +168,21 @@ Cursor will walk through each task step-by-step, generating code, answering ques
 
 ## PHASE 5 — 🎛️ Paper Trading Deployment (Repeatable)
 
-17. 🚀 Paper Trade Setup
-   - [ ] `lean cloud live start --brokerage "Paper Trading"`
+18. 🚀 Paper Trade Setup
+   - [ ] Choose deployment method: Cloud (recommended for ARM Macs) or Local
+   - [ ] **Cloud Deployment**: Use QuantConnect web interface for live trading
+     - Push strategy with `lean cloud push --project "MyStrategy"`
+     - Deploy via QuantConnect web interface (no Docker needed)
+     - Monitor via QuantConnect dashboard
+   - [ ] **Local Deployment** (Intel/AMD64 only): 
+     - Install Docker (or colima on macOS as alternative to Docker Desktop)
+     - Use `lean live --environment "live-interactive"`
+     - Note: ARM Macs (M1/M2/M3) not supported for IBKR local deployment
    - [ ] Set up logs, error tracking, summary email
    - [ ] Slack or webhook for alerts
    - [ ] ✍️ Update `/strategies/{name}/README.md` to include live deployment steps
 
-18. 📁 Folder Structure Best Practice
+19. 📁 Folder Structure Best Practice
    - [ ] Sync with GitHub + DVC
    - [ ] Include `Makefile` targets: build, test, run, report
    - [ ] Setup `daily_report.sh`
@@ -175,7 +192,7 @@ Cursor will walk through each task step-by-step, generating code, answering ques
 
 ## PHASE 6 — 📊 Monitoring, Tax, Survival Management
 
-19. 🔍 Monitoring Strategy Health
+20. 🔍 Monitoring Strategy Health
    - [ ] Alert on:
      - Losses > X%
      - Trade inactivity
@@ -183,16 +200,16 @@ Cursor will walk through each task step-by-step, generating code, answering ques
    - [ ] Daily stats push to dashboard
    - [ ] ✍️ Add README section or `/monitoring/README.md` to explain how monitoring is implemented
 
-20. ⚠️ Model/Alpha Decay Detection
+21. ⚠️ Model/Alpha Decay Detection
    - [ ] Compare expected return vs realized
    - [ ] Plot rolling accuracy and confidence
 
-21. 🧾 Tax Management (NYC, $245K W-2, Taxable Account)
+22. 🧾 Tax Management (NYC, $245K W-2, Taxable Account)
    - [ ] Avoid short-term gain churn
    - [ ] Track realized/unrealized gains
    - [ ] ✍️ Add `/tax/README.md` if building tax estimation tools/scripts
 
-22. 📓 Reporting & Logs
+23. 📓 Reporting & Logs
    - [ ] Monthly .pdf or .md report: P&L, stats, charts
    - [ ] Real-time dashboard
    - [ ] Tear sheet
@@ -205,7 +222,7 @@ Cursor will walk through each task step-by-step, generating code, answering ques
 
 ## PHASE 7 — 🧠 Portfolio Optimization & Multi-Strategy Management
 
-23. 📊 Portfolio Optimizer
+24. 📊 Portfolio Optimizer
    - [ ] Use `/portfolio/optimizer.py`
    - [ ] Monthly rebalance by Sharpe, corr, volatility
    - [ ] ✍️ Add `/portfolio/README.md` with:
@@ -213,7 +230,7 @@ Cursor will walk through each task step-by-step, generating code, answering ques
      - Optimization methodology
      - Instructions for integrating new strategies
 
-24. ➕ Adding New Strategies (Full Independence)
+25. ➕ Adding New Strategies (Full Independence)
    - [ ] Use `make copy-strategy FROM=existing TO=new` to copy from successful strategies
    - [ ] Each strategy is completely independent - no shared dependencies
    - [ ] Repeat workflow from Phase 2–6 for new strategy
@@ -224,17 +241,17 @@ Cursor will walk through each task step-by-step, generating code, answering ques
 
 ## PHASE 8 — ⚗️ Advanced Modeling Add-Ons
 
-25. 🔄 Reinforcement Learning
+26. 🔄 Reinforcement Learning
    - [ ] Use `FinRL`, `stable-baselines3`
    - [ ] Model action space, reward, and environment logic
    - [ ] ✍️ Add `/models/rl/README.md`
 
-26. 📉 Regime Switching
+27. 📉 Regime Switching
    - [ ] Use HMM (`hmmlearn`, `pomegranate`)
    - [ ] Dynamically select models based on market regime
    - [ ] ✍️ Add `/models/regime/README.md`
 
-27. 🔁 Probabilistic Programming
+28. 🔁 Probabilistic Programming
    - [ ] Use `pymc3`, `tensorflow_probability`
    - [ ] Confidence-weighted signal generation
    - [ ] ✍️ Add `/models/bayesian/README.md` detailing posterior inference, priors used, etc.

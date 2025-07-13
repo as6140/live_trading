@@ -80,6 +80,10 @@ lean init --organization="Your Organization Name" --language=python
 - **QuantConnect**: Paid account required for API access and cloud backtesting
 - **Python**: Version 3.11.13 (3.13+ has compatibility issues with ML libraries)
 - **Operating System**: macOS, Linux, or Windows with WSL2
+- **Docker**: Only required for local live trading (Intel/AMD64 only)
+  - **macOS**: Docker Desktop or colima (lightweight alternative)
+  - **ARM Macs (M1/M2/M3)**: Use QuantConnect cloud deployment instead
+  - **Cloud deployment**: No Docker required
 
 ### 4. Strategy Development Workflow (Full Independence)
 ```bash
@@ -99,34 +103,81 @@ make lean-cloud-push PROJECT=MyMomentumStrategy
 # 5. Run cloud backtest
 make lean-backtest PROJECT=MyMomentumStrategy
 
-# 6. Monitor results via QuantConnect web interface
+# 6. Run parameter optimization (optional)
+make lean-optimize PROJECT=MyMomentumStrategy
+
+# 7. Monitor results via QuantConnect web interface
+```
+
+### 5. Parameter Optimization
+```bash
+# Optimize strategy parameters to find best combinations
+make lean-optimize PROJECT=MyMomentumStrategy
+
+# Or use QuantConnect web interface "Optimize Project" button
+# - Define parameters in config.json or strategy code
+# - QuantConnect tests multiple parameter combinations
+# - Results show optimal settings for maximum performance
+```
+
+### 6. Live Trading Deployment Options
+
+#### Cloud Deployment (Recommended for ARM Macs)
+```bash
+# Push strategy to QuantConnect cloud
+make lean-cloud-push PROJECT=MyMomentumStrategy
+
+# Deploy via QuantConnect web interface:
+# 1. Go to your project in QuantConnect
+# 2. Click "Deploy Live" tab
+# 3. Configure brokerage settings (IBKR, etc.)
+# 4. Click "Deploy" button
+# 5. Monitor via QuantConnect dashboard
+```
+
+#### Local Deployment (Intel/AMD64 only)
+```bash
+# Install Docker (if not already installed)
+# macOS: brew install colima docker  # Lightweight alternative
+# or: brew install --cask docker     # Docker Desktop
+
+# Start Docker service
+colima start  # For colima users
+# or start Docker Desktop
+
+# Deploy locally
+cd lean_workspace
+lean live "MyStrategy" --environment "live-interactive"
+
+# Note: ARM Macs (M1/M2/M3) not supported for IBKR local deployment
 ```
 
 ## 🔧 Makefile Commands
 
-### Core Commands
+### 7. Core Commands
 | Command | Description |
 |---------|-------------|
 | `make build` | Install dependencies and setup environment |
 | `make test` | Run all tests and validations |
 | `make clean` | Clean temporary files and logs |
 
-### Strategy Management (Full Independence)
+### 8. Strategy Management (Full Independence)
 | Command | Description |
 |---------|-------------|
 | `make list-strategies` | List available strategies to copy from |
 | `make copy-strategy FROM=source TO=target` | Create new strategy by copying existing one |
 | `make create-first-strategy` | Create your first ML strategy (one-time only) |
 
-### Lean-Specific Commands
+### 9. Lean-Specific Commands
 | Command | Description |
 |---------|-------------|
 | `make lean-backtest PROJECT=project_name` | Run cloud backtest for specific project |
+| `make lean-optimize PROJECT=project_name` | Run parameter optimization for specific project |
 | `make lean-cloud-push PROJECT=project_name` | Push project to QuantConnect cloud |
 | `make lean-cloud-pull` | Sync all projects from QuantConnect cloud |
 | `make lean-research PROJECT=project_name` | Open Jupyter notebook for research |
 
-### Development Commands
+### 10. Development Commands
 | Command | Description |
 |---------|-------------|
 | `make lint` | Run code linting and formatting |
@@ -134,6 +185,8 @@ make lean-backtest PROJECT=MyMomentumStrategy
 | `make backup` | Create backup of all important files |
 
 ## 🏗️ Full Independence Architecture
+
+### 11. Architecture Overview
 
 This project uses a **Full Independence** approach where:
 

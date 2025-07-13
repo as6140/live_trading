@@ -17,8 +17,10 @@ help:
 	@echo "  clean         - Clean temporary files and logs"
 	@echo "  copy-strategy - Create new strategy from existing one (FROM=source TO=target)"
 	@echo "  list-strategies - List available strategies to copy from"
+	@echo "  lean-optimize - Run parameter optimization (PROJECT=project_name)"
 	@echo ""
 	@echo "Example: make copy-strategy FROM=FirstMLTest TO=MyMomentumStrategy"
+	@echo "Example: make lean-optimize PROJECT=FirstMLTest"
 
 # Environment setup
 build:
@@ -179,6 +181,14 @@ lean-backtest:
 	fi
 	@echo "📈 Running Lean backtest for $(PROJECT)..."
 	@cd lean_workspace && ../quant-trading-env/bin/lean cloud backtest "$(PROJECT)"
+
+lean-optimize:
+	@if [ -z "$(PROJECT)" ]; then \
+		echo "❌ Error: Please specify project name with PROJECT=project_name"; \
+		exit 1; \
+	fi
+	@echo "⚙️ Running parameter optimization for $(PROJECT)..."
+	@cd lean_workspace && ../quant-trading-env/bin/lean cloud optimize "$(PROJECT)"
 
 lean-research:
 	@if [ -z "$(PROJECT)" ]; then \
