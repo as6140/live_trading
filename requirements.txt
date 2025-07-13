@@ -1,0 +1,94 @@
+# === Core Trading Platform ===
+lean>=1.0.0
+quantconnect-stubs
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# === Machine Learning Core ===
+scikit-learn>=1.3.0
+xgboost>=1.7.0
+lightgbm>=4.0.0
+tensorflow>=2.13.0
+torch>=2.0.0
+optuna>=3.3.0
+
+# === Bayesian & Probabilistic ===
+pymc>=5.7.0
+tensorflow-probability>=0.21.0
+arviz>=0.15.0
+
+# === Reinforcement Learning ===
+stable-baselines3>=2.0.0
+gymnasium>=0.29.0
+
+# === Financial Data & Analysis ===
+yfinance>=0.2.18
+pandas-ta>=0.3.14b
+ta-lib>=0.4.25
+quantlib>=1.31
+empyrical>=0.5.5
+
+# === Time Series & Hidden Markov Models ===
+hmmlearn>=0.3.0
+statsmodels>=0.14.0
+arch>=6.2.0
+
+# === MLOps & Experiment Tracking ===
+mlflow>=2.6.0
+dvc>=3.15.0
+wandb>=0.15.0
+
+# === Explainability ===
+shap>=0.42.0
+lime>=0.2.0.1
+
+# === Dashboards & Visualization ===
+streamlit>=1.25.0
+dash>=2.13.0
+bokeh>=3.2.0
+
+# === API & Data Sources ===
+alpha-vantage>=2.3.1
+polygon-api-client>=1.12.0
+requests>=2.31.0
+websocket-client>=1.6.0
+
+# === Utilities ===
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+click>=8.1.6
+tqdm>=4.65.0
+joblib>=1.3.0
+
+# === Development & Testing ===
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.7.0
+flake8>=6.0.0
+mypy>=1.5.0
+pre-commit>=3.3.0
+
+# === Numerical & Scientific ===
+scipy>=1.11.0
+sympy>=1.12
+numba>=0.57.0
+
+# === Database & Storage ===
+sqlalchemy>=2.0.19
+redis>=4.6.0
+
+# === Logging & Monitoring ===
+loguru>=0.7.0
+prometheus-client>=0.17.0
+
+# === Risk Management ===
+pyfolio>=0.9.2
+riskfolio-lib>=5.0.0
+
+# === Jupyter & Notebooks ===
+jupyter>=1.0.0
+ipython>=8.0.0
+notebook>=7.0.0 

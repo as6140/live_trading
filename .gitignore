@@ -1,0 +1,137 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+quant-trading-env/
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Trading Data & Models
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.weights
+*.pt
+*.pth
+*.ckpt
+*.pb
+
+# Logs and Temporary Files
+*.log
+*.tmp
+*.temp
+logs/
+temp/
+tmp/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# QuantConnect/Lean
+lean_workspace/*/bin/
+lean_workspace/*/obj/
+lean_workspace/*/*.csx
+lean_workspace/*/backtests/
+lean_workspace/*/optimizations/
+lean_workspace/*/live/
+
+# Configuration & Secrets
+config.json
+*.key
+*.pem
+*.p12
+*.pfx
+api_keys.py
+secrets.py
+credentials.json
+.env*
+!.env.example
+
+# Brokerage Data
+/data/live/
+/data/raw/
+/data/processed/
+/backtests/
+/live_results/
+
+# Generated Reports
+/reports/*.pdf
+/reports/*.html
+/tax/*.pdf
+/risk_reports/*.pdf
+
+# Cache & Temporary
+.cache/
+.pytest_cache/
+.coverage
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Documentation builds
+docs/_build/
+site/
+
+# Profiling
+.prof
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/ 
