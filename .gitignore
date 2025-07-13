@@ -89,7 +89,10 @@ api_keys.py
 secrets.py
 credentials.json
 .env*
-!.env.example
+!credentials.template
+
+# Lean Configuration with credentials (only gitignore if contains real creds)
+# lean_workspace/lean.json
 
 # Brokerage Data
 /data/live/

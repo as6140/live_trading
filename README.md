@@ -208,3 +208,176 @@ This project uses a **Full Independence** approach where:
 - **Successful strategies become templates** for new ones
 - **Independence trumps code elegance** when money is on the line
 - **Each strategy is a fortress** - completely isolated and protected 
+
+# Live Trading with QuantConnect & IBKR
+
+This repository contains a complete quantitative trading system integrating QuantConnect with Interactive Brokers for live paper trading.
+
+## Quick Start
+
+> 📋 **New to this system?** See [FIRST_TIME_SETUP.md](FIRST_TIME_SETUP.md) for complete step-by-step instructions
+
+### 1. Initial Setup
+```bash
+# Clone repository
+git clone <your-repo-url>
+cd live_trading
+
+# Set up Python environment
+python -m venv quant-trading-env
+source quant-trading-env/bin/activate  # On Windows: quant-trading-env\Scripts\activate
+pip install -r requirements.txt
+
+# Install QuantConnect CLI
+pip install lean
+```
+
+### 2. Credential Setup
+
+#### A. Get Your IBKR Paper Trading Account
+1. **Sign up for Interactive Brokers**: [https://www.interactivebrokers.com](https://www.interactivebrokers.com)
+2. **Enable Paper Trading**: 
+   - Log into Client Portal
+   - Go to Settings → Account Settings
+   - Enable "Paper Trading" 
+   - Note your paper account number (format: DUM######)
+3. **Get TWS/Gateway Credentials**: Same as your IBKR login credentials
+
+#### B. Set Up Credentials Locally
+```bash
+# Run the automated credential setup
+python setup_credentials.py
+
+# This creates .env file from credentials.template
+# Edit .env with your actual IBKR details:
+nano .env  # or use any text editor
+```
+
+**Your .env file should contain:**
+```bash
+# Replace with your actual IBKR paper trading details
+IBKR_ACCOUNT=DUM123456           # Your paper trading account number  
+IBKR_USERNAME=your_username      # Your IBKR login username
+IBKR_PASSWORD=your_password      # Your IBKR login password
+```
+
+#### C. Verify Setup
+```bash
+# Check that lean.json was updated with your credentials
+cat lean_workspace/lean.json | grep "ib-account"
+# Should show your account number, not ${IBKR_ACCOUNT}
+
+# Test QuantConnect CLI setup
+lean login  # Follow prompts to connect your QuantConnect account
+```
+
+### 3. QuantConnect Account Setup
+
+#### A. Create QuantConnect Account (if needed)
+1. **Sign up**: [https://www.quantconnect.com](https://www.quantconnect.com)
+2. **Get API credentials**: Account → My Account → API Access
+3. **Note**: Free tier sufficient for getting started
+
+#### B. Configure QuantConnect CLI
+```bash
+# Login to QuantConnect (first time only)
+lean login
+# Enter your QuantConnect email and password when prompted
+
+# Download sample data (optional for cloud deployment)
+lean data download --dataset "US Equity Security Master"
+```
+
+### 4. Deploy to Live Trading
+
+#### A. Cloud Deployment (Recommended)
+```bash
+# Push strategy to QuantConnect cloud
+lean cloud push --project "FirstMLTest"
+
+# Then deploy via QuantConnect web interface:
+# 1. Go to https://www.quantconnect.com/project/FirstMLTest
+# 2. Click "Deploy Live" 
+# 3. Select "Interactive Brokers" as brokerage
+# 4. Enter your IBKR paper account details
+# 5. Click "Deploy" - strategy will start trading!
+```
+
+#### B. Local Deployment (Advanced Users)
+```bash
+# For local deployment (requires x86_64 architecture)
+lean live "FirstMLTest" --environment "live-interactive"
+# Note: ARM Macs (M1/M2/M3) not supported for IBKR local deployment
+```
+
+#### C. Verify Deployment
+- **QuantConnect Dashboard**: Monitor trades at https://www.quantconnect.com
+- **IBKR Portal**: Check positions in your paper trading account
+- **Logs**: Check `logs/` directory for local deployments
+
+## Project Structure
+
+```
+live_trading/
+├── lean_workspace/           # QuantConnect algorithms
+│   ├── FirstMLTest/         # Live trading strategy
+│   ├── lean.json.example    # Configuration template
+│   └── data/               # Market data
+├── credentials.template     # Credential template
+├── setup_credentials.py    # Credential setup script
+├── Makefile               # Build automation
+└── system_prompt_checklist.md  # Development checklist
+```
+
+## Security
+
+- **Credentials**: Use `credentials.template` → `.env` → `lean.json` flow
+- **Git Safety**: Only templates committed, actual credentials gitignored
+- **Paper Trading**: Currently configured for IBKR paper account
+
+## Development Phases
+
+1. ✅ **Setup & Integration** - IBKR + QuantConnect integration
+2. 🔄 **Strategy Research** - ML model development  
+3. ⏳ **Backtesting** - Historical performance validation
+4. ⏳ **Parameter Optimization** - Strategy fine-tuning
+5. ⏳ **Risk Management** - Position sizing and risk controls
+6. ⏳ **Monitoring** - Real-time performance tracking
+
+## Parameter Optimization
+
+QuantConnect provides built-in parameter optimization via:
+- **Web Interface**: "Optimize Project" button in project dashboard
+- **CLI**: `make lean-optimize` (see Makefile for details)
+
+## Deployment Options
+
+### Cloud Deployment (Recommended)
+- ✅ Works on all architectures (Intel, ARM/M1/M2/M3)
+- ✅ No Docker required
+- ✅ Managed infrastructure
+- ✅ Easy scaling
+
+### Local Deployment
+- ❌ ARM Macs not supported for IBKR
+- ✅ Intel Macs/Linux/Windows supported
+- ⚠️ Requires Docker
+
+## Troubleshooting
+
+### ARM Mac Issues
+- IBKR local deployment not supported on ARM architecture
+- Use cloud deployment instead
+- For other brokers, consider colima as Docker alternative
+
+### Docker Alternatives
+```bash
+# Install colima (lightweight Docker alternative)
+brew install colima docker
+brew link docker
+colima start
+```
+
+## Contributing
+
+See `system_prompt_checklist.md` for development workflow and phase guidelines. 

@@ -8,6 +8,7 @@ help:
 	@echo "🚀 AI-Driven Quant Trading Platform"
 	@echo "Available targets:"
 	@echo "  build         - Install dependencies and setup environment"
+	@echo "  setup-creds   - Setup credentials safely using templates"
 	@echo "  test          - Run all tests and validations"
 	@echo "  train         - Train all models with current data"
 	@echo "  backtest      - Run backtests for all strategies"
@@ -19,6 +20,8 @@ help:
 	@echo "  list-strategies - List available strategies to copy from"
 	@echo "  lean-optimize - Run parameter optimization (PROJECT=project_name)"
 	@echo ""
+	@echo "📋 First time? See FIRST_TIME_SETUP.md for complete setup guide"
+	@echo ""
 	@echo "Example: make copy-strategy FROM=FirstMLTest TO=MyMomentumStrategy"
 	@echo "Example: make lean-optimize PROJECT=FirstMLTest"
 
@@ -29,6 +32,12 @@ build:
 	@echo "📦 Installing dependencies..."
 	quant-trading-env/bin/pip install -r requirements.txt
 	@echo "✅ Environment setup complete!"
+
+# Credential setup
+setup-creds:
+	@echo "🔐 Setting up credentials safely..."
+	python setup_credentials.py
+	@echo "⚠️  Remember to edit .env file with your actual credentials!"
 
 # Testing
 test:

@@ -258,38 +258,6 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
-        "live-interactive-iqfeed": {
-            "live-mode": true,
-            "live-mode-brokerage": "InteractiveBrokersBrokerage",
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "data-queue-handler": [
-                "QuantConnect.IQFeed.IQFeedDataQueueHandler"
-            ],
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "QuantConnect.IQFeed.IQFeedDataQueueHandler",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-fxcm": {
-            "live-mode": true,
-            "live-mode-brokerage": "FxcmBrokerage",
-            "data-queue-handler": [
-                "FxcmBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
         "live-oanda": {
             "live-mode": true,
             "live-mode-brokerage": "OandaBrokerage",
@@ -306,11 +274,11 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
-        "live-coinbase": {
+        "live-fxcm": {
             "live-mode": true,
-            "live-mode-brokerage": "CoinbaseBrokerage",
+            "live-mode-brokerage": "FxcmBrokerage",
             "data-queue-handler": [
-                "CoinbaseBrokerage"
+                "FxcmBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
@@ -338,43 +306,27 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
+        "live-coinbase": {
+            "live-mode": true,
+            "live-mode-brokerage": "CoinbaseBrokerage",
+            "data-queue-handler": [
+                "CoinbaseBrokerage"
+            ],
+            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
+            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
+            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
+            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+            "history-provider": [
+                "BrokerageHistoryProvider",
+                "SubscriptionDataReaderHistoryProvider"
+            ]
+        },
         "live-binance": {
             "live-mode": true,
             "live-mode-brokerage": "BinanceBrokerage",
             "data-queue-handler": [
                 "BinanceBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-futures-binance": {
-            "live-mode": true,
-            "live-mode-brokerage": "BinanceFuturesBrokerage",
-            "data-queue-handler": [
-                "BinanceFuturesBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-coin-futures-binance": {
-            "live-mode": true,
-            "live-mode-brokerage": "BinanceCoinFuturesBrokerage",
-            "data-queue-handler": [
-                "BinanceCoinFuturesBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
@@ -418,11 +370,11 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
-        "live-trade-station": {
+        "live-kraken": {
             "live-mode": true,
-            "live-mode-brokerage": "TradeStationBrokerage",
+            "live-mode-brokerage": "KrakenBrokerage",
             "data-queue-handler": [
-                "TradeStationBrokerage"
+                "KrakenBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
@@ -450,108 +402,7 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
-        "live-futures-bybit": {
-            "live-mode": true,
-            "live-mode-brokerage": "BybitFuturesBrokerage",
-            "data-queue-handler": [
-                "BybitFuturesBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-trading-technologies": {
-            "live-mode": true,
-            "live-mode-brokerage": "TradingTechnologiesBrokerage",
-            "data-queue-handler": [
-                "TradingTechnologiesBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler"
-        },
-        "live-kraken": {
-            "live-mode": true,
-            "live-mode-brokerage": "KrakenBrokerage",
-            "data-queue-handler": [
-                "KrakenBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-ftx": {
-            "live-mode": true,
-            "live-mode-brokerage": "QuantConnect.FTXBrokerage.FTXBrokerage",
-            "data-queue-handler": [
-                "QuantConnect.FTXBrokerage.FTXBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-exante": {
-            "live-mode": true,
-            "live-mode-brokerage": "QuantConnect.ExanteBrokerage.ExanteBrokerage",
-            "data-queue-handler": [
-                "QuantConnect.ExanteBrokerage.ExanteBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": "BrokerageHistoryProvider"
-        },
-        "live-ftxus": {
-            "live-mode": true,
-            "live-mode-brokerage": "QuantConnect.FTXBrokerage.FTXUSBrokerage",
-            "data-queue-handler": [
-                "QuantConnect.FTXBrokerage.FTXUSBrokerage"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
-            "history-provider": [
-                "BrokerageHistoryProvider",
-                "SubscriptionDataReaderHistoryProvider"
-            ]
-        },
-        "live-wolverine": {
-            "live-mode": true,
-            "live-mode-brokerage": "WolverineBrokerage",
-            "history-provider": [
-                "SubscriptionDataReaderHistoryProvider"
-            ],
-            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
-            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
-            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
-            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler"
-        },
-        "live-charlesschwab": {
+        "live-charles-schwab": {
             "live-mode": true,
             "live-mode-brokerage": "CharlesSchwabBrokerage",
             "data-queue-handler": [
@@ -569,9 +420,9 @@
         },
         "live-tastytrade": {
             "live-mode": true,
-            "live-mode-brokerage": "TastytradeBrokerage",
+            "live-mode-brokerage": "TastyTradeBrokerage",
             "data-queue-handler": [
-                "TastytradeBrokerage"
+                "TastyTradeBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
@@ -583,26 +434,75 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         },
-        "live-rbi": {
+        "live-exante": {
             "live-mode": true,
-            "live-mode-brokerage": "RBIBrokerage",
+            "live-mode-brokerage": "ExanteBrokerage",
             "data-queue-handler": [
-                "QuantConnect.Lean.Engine.DataFeeds.Queues.LiveDataQueue"
-            ],
-            "history-provider": [
-                "SubscriptionDataReaderHistoryProvider"
+                "ExanteBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
             "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
             "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
-            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler"
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+            "history-provider": [
+                "BrokerageHistoryProvider",
+                "SubscriptionDataReaderHistoryProvider"
+            ]
         },
-        "live-eze": {
+        "live-zerodha": {
             "live-mode": true,
-            "live-mode-brokerage": "QuantConnect.EzeBrokerage.EzeBrokerage",
+            "live-mode-brokerage": "ZerodhaBrokerage",
             "data-queue-handler": [
-                "QuantConnect.EzeBrokerage.EzeBrokerage"
+                "ZerodhaBrokerage"
+            ],
+            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
+            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
+            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
+            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+            "history-provider": [
+                "BrokerageHistoryProvider",
+                "SubscriptionDataReaderHistoryProvider"
+            ]
+        },
+        "live-samco": {
+            "live-mode": true,
+            "live-mode-brokerage": "SamcoBrokerage",
+            "data-queue-handler": [
+                "SamcoBrokerage"
+            ],
+            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
+            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
+            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
+            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+            "history-provider": [
+                "BrokerageHistoryProvider",
+                "SubscriptionDataReaderHistoryProvider"
+            ]
+        },
+        "live-ftx": {
+            "live-mode": true,
+            "live-mode-brokerage": "FTXBrokerage",
+            "data-queue-handler": [
+                "FTXBrokerage"
+            ],
+            "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
+            "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
+            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
+            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+            "history-provider": [
+                "BrokerageHistoryProvider",
+                "SubscriptionDataReaderHistoryProvider"
+            ]
+        },
+        "live-ftxus": {
+            "live-mode": true,
+            "live-mode-brokerage": "FTXUSBrokerage",
+            "data-queue-handler": [
+                "FTXUSBrokerage"
             ],
             "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
             "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
@@ -614,8 +514,5 @@
                 "SubscriptionDataReaderHistoryProvider"
             ]
         }
-    },
-    "job-organization-id": "71085a9834969a9492e4c3f29b2747a7",
-    "organization-id": "71085a9834969a9492e4c3f29b2747a7",
-    "file-database-last-update": "07/12/2025 21:59:22"
-}
+    }
+} 
